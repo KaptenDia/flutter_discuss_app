@@ -1,5 +1,5 @@
 class Api {
-  static const _baseUrl = 'http://192.168.36.53/discuss_app';
+  static const _baseUrl = 'http://192.168.56.1/discuss_app';
   static const user = '$_baseUrl/user';
   static const topic = '$_baseUrl/topic';
   static const comment = '$_baseUrl/comment';

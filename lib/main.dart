@@ -39,7 +39,6 @@ class MyApp extends StatelessWidget {
             surface: primaryColor,
             primary: primaryColor,
           ),
-          useMaterial3: true,
         ),
         routerConfig: AppRoute.routerConfig,
         debugShowCheckedModeBanner: false,

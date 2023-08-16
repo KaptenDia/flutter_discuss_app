@@ -51,7 +51,7 @@ class AppRoute {
       ),
       GoRoute(
         path: login,
-        builder: (context, state) => const LoginView(),
+        builder: (context, state) => LoginView(),
       ),
       GoRoute(
         path: register,

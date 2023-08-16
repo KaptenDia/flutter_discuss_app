@@ -15,7 +15,7 @@ class Session {
     return currentUser;
   }
 
-  Future<bool> setUser(User user) async {
+  static Future<bool> setUser(User user) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     Map<String, dynamic> mapUser = user.toJson();
     String stringUser = jsonEncode(mapUser);
