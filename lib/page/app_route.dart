@@ -55,7 +55,7 @@ class AppRoute {
       ),
       GoRoute(
         path: register,
-        builder: (context, state) => const RegisterView(),
+        builder: (context, state) => RegisterView(),
       ),
       GoRoute(
         path: addTopic,
