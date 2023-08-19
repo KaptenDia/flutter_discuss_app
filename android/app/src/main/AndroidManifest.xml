@@ -2,7 +2,7 @@
     package="com.bwa.discuss_app">
     <application
     android:requestLegacyExternalStorage="true"
-        android:label="IWU Social App"
+        android:label="Flutter Discus App"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
