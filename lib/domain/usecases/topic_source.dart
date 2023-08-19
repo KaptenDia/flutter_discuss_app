@@ -20,7 +20,7 @@ class TopicSource {
         'title': title,
         'description': description,
         'images': images,
-        'base6464codes': base64codes,
+        'base64codes': base64codes,
         'id_user': idUser,
       });
       DMethod.printTitle('Topic Source - create', response.body);

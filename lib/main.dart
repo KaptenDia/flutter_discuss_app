@@ -1,6 +1,7 @@
 import 'package:discuss_app/controller/c_explore.dart';
 import 'package:discuss_app/controller/c_my_topic.dart';
 import 'package:discuss_app/controller/c_user.dart';
+import 'package:discuss_app/domain/session.dart';
 import 'package:discuss_app/page/app_route.dart';
 import 'package:discuss_app/page/utils/theme.dart';
 import 'package:flutter/material.dart';
@@ -31,22 +32,29 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => CMyTopic()),
         ChangeNotifierProvider(create: (context) => CAccount()),
       ],
-      child: MaterialApp.router(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-            primaryColor: primaryColor,
-            colorScheme: const ColorScheme.light().copyWith(
-              surface: primaryColor,
-              primary: primaryColor,
-              secondary: primaryColor,
-            ),
-            floatingActionButtonTheme: FloatingActionButtonThemeData(
-              backgroundColor: primaryColor,
-              foregroundColor: whiteColor,
-            )),
-        routerConfig: AppRoute.routerConfig,
-        debugShowCheckedModeBanner: false,
-      ),
+      builder: (context, child) {
+        Session.getUser().then((user) {
+          if (user != null) {
+            context.read<CUser>().data = user;
+          }
+        });
+        return MaterialApp.router(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+              primaryColor: primaryColor,
+              colorScheme: const ColorScheme.light().copyWith(
+                surface: primaryColor,
+                primary: primaryColor,
+                secondary: primaryColor,
+              ),
+              floatingActionButtonTheme: FloatingActionButtonThemeData(
+                backgroundColor: primaryColor,
+                foregroundColor: whiteColor,
+              )),
+          routerConfig: AppRoute.routerConfig,
+          debugShowCheckedModeBanner: false,
+        );
+      },
     );
   }
 }

@@ -1,8 +1,10 @@
 import 'package:discuss_app/controller/c_home.dart';
+import 'package:discuss_app/page/app_route.dart';
 import 'package:discuss_app/page/fragment/account_fragment.dart';
 import 'package:discuss_app/page/fragment/explore_fragment.dart';
 import 'package:discuss_app/page/fragment/feed_fragment.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../fragment/my_topic_fragment.dart';
@@ -42,7 +44,9 @@ class HomeView extends StatelessWidget {
           child: menu[_.indexMenu]['view'],
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            context.push(AppRoute.addTopic);
+          },
           mini: true,
           tooltip: 'Create New Topic',
           child: const Icon(

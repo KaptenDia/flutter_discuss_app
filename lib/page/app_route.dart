@@ -3,11 +3,15 @@ import 'package:discuss_app/controller/c_comment.dart';
 import 'package:discuss_app/controller/c_following.dart';
 import 'package:discuss_app/controller/c_profile.dart';
 import 'package:discuss_app/controller/c_search.dart';
+import 'package:discuss_app/domain/models/topic.dart';
 import 'package:discuss_app/domain/session.dart';
+import 'package:discuss_app/page/add_topic/add_topic_view.dart';
+import 'package:discuss_app/page/detail_topic/detail_topic_view.dart';
 import 'package:discuss_app/page/error/error_view.dart';
 import 'package:discuss_app/page/home/home_view.dart';
 import 'package:discuss_app/page/login/login_view.dart';
 import 'package:discuss_app/page/register/register_view.dart';
+import 'package:discuss_app/page/update_topic/update_topic_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -25,6 +29,8 @@ class AppRoute {
   static const follower = '/follower';
   static const following = '/following';
   static const comment = '/comment';
+  static const detailTopic = '/detail-topic';
+  static const updateTopic = '/update-topic';
 
   static GoRouter routerConfig = GoRouter(
     errorBuilder: (context, state) => ErrorView(
@@ -61,7 +67,7 @@ class AppRoute {
         path: addTopic,
         builder: (context, state) => ChangeNotifierProvider(
           create: (_) => CAddTopic(),
-          child: const Scaffold(),
+          child: AddTopicView(),
         ),
       ),
       GoRoute(
@@ -98,6 +104,16 @@ class AppRoute {
           create: (_) => CComment(),
           child: const Scaffold(),
         ),
+      ),
+      GoRoute(
+        path: detailTopic,
+        builder: (context, state) =>
+            DetailTopicView(topic: state.extra as Topic),
+      ),
+      GoRoute(
+        path: updateTopic,
+        builder: (context, state) =>
+            UpdateTopicView(topic: state.extra as Topic),
       ),
     ],
   );
