@@ -6,8 +6,10 @@ import 'package:discuss_app/data/constants.dart';
 import 'package:discuss_app/page/utils/app_format.dart';
 import 'package:discuss_app/page/utils/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../domain/models/topic.dart';
+import '../app_route.dart';
 
 class DetailTopicView extends StatelessWidget {
   const DetailTopicView({super.key, required this.topic});
@@ -42,7 +44,9 @@ class DetailTopicView extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16),
         child: DButtonElevation(
-          onClick: () {},
+          onClick: () {
+            context.push(AppRoute.comment, extra: topic);
+          },
           height: 40,
           mainColor: Theme.of(context).primaryColor,
           child: Row(

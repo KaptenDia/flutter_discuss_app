@@ -6,13 +6,17 @@ import 'package:discuss_app/controller/c_search.dart';
 import 'package:discuss_app/domain/models/topic.dart';
 import 'package:discuss_app/domain/session.dart';
 import 'package:discuss_app/page/add_topic/add_topic_view.dart';
+import 'package:discuss_app/page/comment/comment_view.dart';
 import 'package:discuss_app/page/detail_topic/detail_topic_view.dart';
 import 'package:discuss_app/page/error/error_view.dart';
+import 'package:discuss_app/page/follower/follower_view.dart';
+import 'package:discuss_app/page/following/following_view.dart';
 import 'package:discuss_app/page/home/home_view.dart';
 import 'package:discuss_app/page/login/login_view.dart';
+import 'package:discuss_app/page/profile/profile_view.dart';
 import 'package:discuss_app/page/register/register_view.dart';
+import 'package:discuss_app/page/search/search.view.dart';
 import 'package:discuss_app/page/update_topic/update_topic_view.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -74,35 +78,37 @@ class AppRoute {
         path: profile,
         builder: (context, state) => ChangeNotifierProvider(
           create: (_) => CProfile(),
-          child: const Scaffold(),
+          child: ProfileView(
+            user: state.extra as User,
+          ),
         ),
       ),
       GoRoute(
         path: search,
         builder: (context, state) => ChangeNotifierProvider(
           create: (_) => CSearch(),
-          child: const Scaffold(),
+          child: const SearchView(),
         ),
       ),
       GoRoute(
         path: follower,
         builder: (context, state) => ChangeNotifierProvider(
           create: (_) => CFollower(),
-          child: const Scaffold(),
+          child: FollowerView(user: state.extra as User),
         ),
       ),
       GoRoute(
         path: following,
         builder: (context, state) => ChangeNotifierProvider(
           create: (_) => CFollowing(),
-          child: const Scaffold(),
+          child: FollowingView(user: state.extra as User),
         ),
       ),
       GoRoute(
         path: comment,
         builder: (context, state) => ChangeNotifierProvider(
           create: (_) => CComment(),
-          child: const Scaffold(),
+          child: CommentView(topic: state.extra as Topic),
         ),
       ),
       GoRoute(

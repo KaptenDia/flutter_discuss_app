@@ -7,7 +7,7 @@ import '../../data/constants.dart';
 import '../models/user.dart';
 
 class FollowSource {
-  static Future<bool> checkIfFollowing(
+  static Future<bool> checkIsFollowing(
     String fromIdUser,
     String toIdUser,
   ) async {

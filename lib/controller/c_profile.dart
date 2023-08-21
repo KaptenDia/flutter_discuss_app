@@ -28,17 +28,17 @@ class CProfile extends ChangeNotifier {
   bool _isFollowing = false;
   bool get isFollowing => _isFollowing;
   checkIsFollowing(String fromIdUser, String toIdUser) async {
-    _isFollowing = await FollowSource.checkIfFollowing(fromIdUser, toIdUser);
+    _isFollowing = await FollowSource.checkIsFollowing(fromIdUser, toIdUser);
     notifyListeners();
   }
 
-  setFollow(BuildContext context, fromIdUser, toIdUser) {
+  setFollow(BuildContext context, String fromIdUser, String toIdUser) {
     if (isFollowing) {
       FollowSource.noFollowing(fromIdUser, toIdUser).then((success) {
         if (success) {
           setStat(toIdUser);
           checkIsFollowing(fromIdUser, toIdUser);
-          DInfo.snackBarSuccess(context, 'Succes UnFollow');
+          DInfo.snackBarSuccess(context, 'Success UnFollow');
         } else {
           DInfo.snackBarError(context, 'UnFollow Failed');
         }
@@ -48,7 +48,7 @@ class CProfile extends ChangeNotifier {
         if (success) {
           setStat(toIdUser);
           checkIsFollowing(fromIdUser, toIdUser);
-          DInfo.snackBarSuccess(context, 'Succes Follow');
+          DInfo.snackBarSuccess(context, 'Success Follow');
         } else {
           DInfo.snackBarError(context, 'Follow Failed');
         }

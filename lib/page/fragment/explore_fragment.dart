@@ -5,10 +5,12 @@ import 'package:d_view/d_view.dart';
 import 'package:discuss_app/controller/c_explore.dart';
 import 'package:discuss_app/page/utils/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../../controller/c_user.dart';
 import '../../domain/models/topic.dart';
+import '../app_route.dart';
 import '../widgets/item_topic.dart';
 
 class ExploreFragment extends StatelessWidget {
@@ -34,7 +36,9 @@ class ExploreFragment extends StatelessWidget {
               DView.textTitle('Explore', size: 24),
               DButtonElevation(
                 mainColor: primaryColor,
-                onClick: () {},
+                onClick: () {
+                  context.push(AppRoute.search);
+                },
                 width: 36,
                 height: 36,
                 child: Icon(

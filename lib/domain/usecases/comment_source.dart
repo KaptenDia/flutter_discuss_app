@@ -9,21 +9,21 @@ import '../models/comment.dart';
 class CommentSource {
   static Future<bool> create(
     String idTopic,
+    String fromIdUser,
+    String toIdUser,
     String description,
     String image,
     String base64code,
-    String fromIdUser,
-    String toIdUser,
   ) async {
     String url = '${Api.comment}/create.php';
     try {
       Response response = await Client().post(Uri.parse(url), body: {
-        'title': idTopic,
-        'description': description,
+        'id_topic': idTopic,
         'from_id_user': fromIdUser,
         'to_id_user': toIdUser,
+        'description': description,
         'image': image,
-        'base6464code': base64code,
+        'base64code': base64code,
       });
       DMethod.printTitle('Comment Source - create', response.body);
       Map responseBody = jsonDecode(response.body);
