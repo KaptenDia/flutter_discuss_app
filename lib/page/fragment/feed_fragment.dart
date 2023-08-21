@@ -38,19 +38,21 @@ class FeedFragment extends StatelessWidget {
                   ],
                 );
               }
-              return ListView.builder(itemBuilder: (context, index) {
-                Topic topic = _.topics[index];
-                List images = jsonDecode(topic.images);
-                return Padding(
-                  padding: EdgeInsets.fromLTRB(
-                    16,
-                    8,
-                    16,
-                    index == _.topics.length - 1 ? 30 : 8,
-                  ),
-                  child: ItemTopic(topic: topic, images: images),
-                );
-              });
+              return ListView.builder(
+                  itemCount: _.topics.length,
+                  itemBuilder: (context, index) {
+                    Topic topic = _.topics[index];
+                    List images = jsonDecode(topic.images);
+                    return Padding(
+                      padding: EdgeInsets.fromLTRB(
+                        16,
+                        8,
+                        16,
+                        index == _.topics.length - 1 ? 30 : 8,
+                      ),
+                      child: ItemTopic(topic: topic, images: images),
+                    );
+                  });
             },
           ),
         ),
